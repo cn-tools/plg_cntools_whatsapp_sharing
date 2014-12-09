@@ -37,7 +37,7 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
     public function onContentBeforeDisplay($context, &$row, &$params, $page = 0) {
         if($this->params->get('position') == 0) {
             $this->loadHeader();
-            $html = $this->getWhatsAppButton();
+            $html = $this->getWhatsAppButton($row);
 
             return $html;
         }
@@ -46,7 +46,7 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
     public function onContentAfterDisplay($context, &$row, &$params, $page = 0) {
         if($this->params->get('position') == 1) {
             $this->loadHeader();
-            $html = $this->getWhatsAppButton();
+            $html = $this->getWhatsAppButton($row);
 
             return $html;
         }
@@ -58,7 +58,7 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 		$document->addScriptDeclaration($script);
 	}
 
-    private function getWhatsAppButton() {
+    private function getWhatsAppButton($row) {
     	$buttonSize = $this->params->get('btnSize');
 				
 		// Find InfoText for sharing
@@ -91,13 +91,13 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 		}
 		
 		//DIV-Style
-		$divstyle = $this->params->get('divstyle');
+		$divstyle = trim($this->params->get('divstyle'));
 		if ($divstyle != ''){
 			$divstyle = ' class="'.$divstyle.'"';
 		}
 		
 		if ($buttonText != '') {
-			$html = '<div id="plg_cntools_whatsapp_sharing"'.$divstyle.' >';
+			$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$row->id.'"'.$divstyle.' >';
 			$html .= '<a href="whatsapp://send" data-text="'.$dataText.'" data-href="'.$url.'" class="wa_btn '.$buttonSize.'" style="display:none">'.$buttonText.'</a>';
 			$html .= '</div><br class="clear" />';
 		}
