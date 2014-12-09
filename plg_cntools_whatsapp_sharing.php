@@ -3,7 +3,7 @@
  * @Copyright
  * @package     Content - WhatsApp Sharing - Plug In
  * @author      Clemens Neubauer {@link https://github.com/cn-tools/}
- * @version     0-0-1
+ * @version     0-0-3
  * @date        Created on 04-Dec-2014
  * @link        Project Site {@link https://github.com/cn-tools/plg_cntools_whatsapp_sharing}
  *
