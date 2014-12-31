@@ -54,7 +54,7 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 
 	private function loadHeader() {
         $document = JFactory::getDocument();
-		$script = '/* <![CDATA[ */ if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="'.JURI::base().'plugins/content/plg_cntools_whatsapp_sharing/whatsapp-button.js";h.appendChild(s);} /* ]]> */';
+		$script = '/* <![CDATA[ */ if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="'.JURI::base().'plugins' . DIRECTORY_SEPARATOR . 'content' . DIRECTORY_SEPARATOR . 'plg_cntools_whatsapp_sharing' . DIRECTORY_SEPARATOR . 'whatsapp-button.js";h.appendChild(s);} /* ]]> */';
 		$document->addScriptDeclaration($script);
 	}
 
