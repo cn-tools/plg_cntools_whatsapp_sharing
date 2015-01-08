@@ -5,13 +5,13 @@
 		<description></description>
 		<element>plg_cntools_whatsapp_sharing</element>
 		<type>plugin</type>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 		<folder>content</folder>
 		<client_id>0</client_id>
 		<client>0</client>
 		<infourl>https://github.com/cn-tools/plg_cntools_whatsapp_sharing/</infourl>
 		<tags>
-			<tag>beta</tag>
+			<tag>stable</tag>
 		</tags>
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/cn-tools/plg_cntools_whatsapp_sharing/archive/master.zip</downloadurl>
