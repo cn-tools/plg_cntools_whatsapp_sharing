@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<description>PLG_CNTOOLS_WHATSAPP_SHARING_DESC</description>
 
 	<files>
@@ -24,7 +24,7 @@
 	</languages>
 
 	<updateservers>
-		<server type="extension" priority="1" name="plg_cntools_whatsapp_sharing Updates">https://raw.github.com/cn-tools/plg_cntools_whatsapp_sharing/master/updateversion.xml</server>
+		<server type="extension" priority="1" name="plg_cntools_whatsapp_sharing Updates">https://raw.githubusercontent.com/cn-tools/plg_cntools_whatsapp_sharing/master/updateversion.xml</server>
 	</updateservers>
 
 	<config>
