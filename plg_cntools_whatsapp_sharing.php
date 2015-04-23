@@ -3,7 +3,6 @@
  * @Copyright
  * @package     Content - WhatsApp Sharing - Plug In
  * @author      Clemens Neubauer {@link https://github.com/cn-tools/}
- * @version     0-0-3
  * @date        Created on 04-Dec-2014
  * @link        Project Site {@link https://github.com/cn-tools/plg_cntools_whatsapp_sharing}
  *
@@ -90,14 +89,8 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 			$url = 'http://'.$url;
 		}
 		
-		//DIV-Style
-		$divstyle = trim($this->params->get('divstyle'));
-		if ($divstyle != ''){
-			$divstyle = ' class="'.$divstyle.'"';
-		}
-		
 		if ($buttonText != '') {
-			$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$row->id.'"'.$divstyle.' >';
+			$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$row->id.'" class="plg_cntools_whatsapp_sharing'.$this->params->get('divstyle').'" >';
 			$html .= '<a href="whatsapp://send" data-text="'.$dataText.'" data-href="'.$url.'" class="wa_btn '.$buttonSize.'" style="display:none">'.$buttonText.'</a>';
 			$html .= '</div><br class="clear" />';
 		}
