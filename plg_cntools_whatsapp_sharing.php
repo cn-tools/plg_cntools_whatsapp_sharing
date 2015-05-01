@@ -3,7 +3,7 @@
  * @Copyright
  * @package     Content - WhatsApp Sharing - Plug In
  * @author      Clemens Neubauer {@link https://github.com/cn-tools/}
- * @date        Created on 04-Dec-2014
+ * @date        Created on 01-Mai-2014
  * @link        Project Site {@link https://github.com/cn-tools/plg_cntools_whatsapp_sharing}
  *
  * @license GNU/GPL
@@ -53,7 +53,7 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 
 	private function loadHeader() {
         $document = JFactory::getDocument();
-		$script = '/* <![CDATA[ */ if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="'.JURI::base().'plugins' . DIRECTORY_SEPARATOR . 'content' . DIRECTORY_SEPARATOR . 'plg_cntools_whatsapp_sharing' . DIRECTORY_SEPARATOR . 'whatsapp-button.js";h.appendChild(s);} /* ]]> */';
+		$script = '/* <![CDATA[ */ if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="'.JURI::base().'plugins/content/plg_cntools_whatsapp_sharing/whatsapp-button.js";h.appendChild(s);} /* ]]> */';
 		$document->addScriptDeclaration($script);
 	}
 
@@ -89,11 +89,32 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 			$url = 'http://'.$url;
 		}
 		
-		if ($buttonText != '') {
-			$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$row->id.'" class="plg_cntools_whatsapp_sharing'.$this->params->get('divstyle').'" >';
-			$html .= '<a href="whatsapp://send" data-text="'.$dataText.'" data-href="'.$url.'" class="wa_btn '.$buttonSize.'" style="display:none">'.$buttonText.'</a>';
-			$html .= '</div><br class="clear" />';
+		$lTrackingCode = '';
+		if ($this->params->get('usega'))
+		{
+			if ($this->params->get('label') == '1')
+			{
+				$lLabel = $row->id.'-'.$row->title;
+			} elseif ($this->params->get('label') == '2') {
+				$lLabel = $row->alias;
+			} else {
+				$lLabel = str_replace(JURI::base(), '', JURI::current()); //remove base domain
+			}
+			$lLabel = str_replace( array('/', ':', ' ', '?', '#', '&') , array('_', '_', '_', '_', '_', '_') , $lLabel);
+			
+			$lTrackingCode .= 'onclick="';
+			$lTrackingCode .= "ga('sende', 'event', '".$this->params->get('category', 'plg_cntools_whatsapp_sharing')."', '".$this->params->get('action', 'share')."', '".$lLabel."', 1";
+			
+			if ($this->params->get('nonInteraction'))
+			{
+				$lTrackingCode .= ", 'nonInteraction': 1";
+			}
+			$lTrackingCode .= ');" ';
 		}
+		
+		$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$row->id.'" class="plg_cntools_whatsapp_sharing'.$this->params->get('divstyle').'" >';
+		$html .= '<a href="whatsapp://send" '.$lTrackingCode.'data-text="'.$dataText.'" data-href="'.$url.'" class="wa_btn '.$buttonSize.'" style="display:none">'.$buttonText.'</a>';
+		$html .= '</div><br class="clear" />';
 
         return $html;
     }

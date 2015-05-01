@@ -2,12 +2,12 @@
 <extension type="plugin" version="3.0" group="content" method="upgrade">
 	<name>PLG_CNTOOLS_WHATSAPP_SHARING</name>
 	<author>CN-Tools | Clemens Neubauer</author>
-	<creationDate>2014-12-03</creationDate>
+	<creationDate>2015-05-01</creationDate>
 	<copyright>Copyright 2014 (C) Clemens Neubauer. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.6</version>
+	<version>0.0.7</version>
 	<description>PLG_CNTOOLS_WHATSAPP_SHARING_DESC</description>
 
 	<files>
@@ -51,6 +51,28 @@
 				<field name="divstyle" type="text" default="" label="PLG_CNTOOLS_WHATSAPP_SHARING_DIVSTYLE" description="PLG_CNTOOLS_WHATSAPP_SHARING_DIVSTYLE_DESC" />
 
 				<field name="extra_hidden1" type="hidden" default="" />
+			</fieldset>
+			<fieldset name="tracking" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABEL">
+				<field name="usega" type="radio" default="0" class="btn-group btn-group-yesno" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_ACTIVE" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_ACTIVE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="category" required="true" type="text" default="plg_cntools_whatsapp_sharing" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_CATEGORY" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_CATEGORY_DESC" />
+				<field name="action" required="true" type="text" default="share" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_ACTION" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_ACTION_DESC" />
+
+				<field name="label" type="radio" default="0" class="btn-group" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_DESC">
+					<option value="0">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_URL</option>
+					<option value="1">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_ID_TITLE</option>
+					<option value="2">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_ALIAS</option>
+				</field>
+
+				<field name="nonInteraction" type="radio" default="0" class="btn-group btn-group-yesno" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_NONINTERACTION" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_NONINTERACTION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="tracking_hidden1" type="hidden" default="" />
 			</fieldset>
 
 		</fields>
