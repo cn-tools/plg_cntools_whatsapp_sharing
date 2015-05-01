@@ -20,6 +20,10 @@ Additional there are some extra params:
 * Fix URL: if you want that always the same URL is used, insert it here
 * CSS Classes: If you need some special CSS-class values around the DIV-tag of the button, place them here.   
 
+Google Analytics:
+-----------------
+If the site is already working with Google Analytics, you can analyze your visitors clicks on the Share button with the help of some options in the backend of this plug-in
+
 Languages:
 ----------
 * de_DE
