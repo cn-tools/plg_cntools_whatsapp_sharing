@@ -2,12 +2,12 @@
 <extension type="plugin" version="3.0" group="content" method="upgrade">
 	<name>PLG_CNTOOLS_WHATSAPP_SHARING</name>
 	<author>CN-Tools | Clemens Neubauer</author>
-	<creationDate>2015-05-01</creationDate>
+	<creationDate>2015-06-11</creationDate>
 	<copyright>Copyright 2014 (C) Clemens Neubauer. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.8</version>
+	<version>0.0.9</version>
 	<description>PLG_CNTOOLS_WHATSAPP_SHARING_DESC</description>
 
 	<files>
@@ -30,20 +30,24 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" label="PLG_CNTOOLS_WHATSAPP_SHARING_BAISC_LABEL">
-				<field name="dataTxt" type="text" default="" label="PLG_CNTOOLS_WHATSAPP_SHARING_DATATXT" description="PLG_CNTOOLS_WHATSAPP_SHARING_DATATXT_DESC" />
-				<field name="buttonTxt" type="text" default="WhatsApp" label="PLG_CNTOOLS_WHATSAPP_SHARING_BTNTXT" description="PLG_CNTOOLS_WHATSAPP_SHARING_BTNTXT_DESC" required="true" />
+				<field name="dataTxt" type="text" default="" label="PLG_CNTOOLS_WHATSAPP_SHARING_DATATXT" description="" />
+				<field name="dataTxtInfo" type="spacer" label="PLG_CNTOOLS_WHATSAPP_SHARING_DATATXT_DESC" />
+				<field name="buttonTxt" type="text" default="WhatsApp" label="PLG_CNTOOLS_WHATSAPP_SHARING_BTNTXT" description="" required="true" />
+				<field name="buttonTxtInfo" type="spacer" label="PLG_CNTOOLS_WHATSAPP_SHARING_BTNTXT_DESC" />
 
-				<field name="btnSize" type="list" default="1" label="PLG_CNTOOLS_WHATSAPP_SHARING_BTNSIZE" description="PLG_CNTOOLS_WHATSAPP_SHARING_BTNSIZE_DESC">
+				<field name="btnSize" type="radio" class="btn-group" default="wa_btn_m" label="PLG_CNTOOLS_WHATSAPP_SHARING_BTNSIZE" description="PLG_CNTOOLS_WHATSAPP_SHARING_BTNSIZE_DESC">
 					<option value="wa_btn_s">PLG_CNTOOLS_WHATSAPP_SHARING_BTN_SMALL</option>
 					<option value="wa_btn_m">PLG_CNTOOLS_WHATSAPP_SHARING_BTN_MEDIUM</option>
 					<option value="wa_btn_l">PLG_CNTOOLS_WHATSAPP_SHARING_BTN_LARGE</option>
 				</field>
 
-				<field name="position" type="list" default="0" label="PLG_CNTOOLS_WHATSAPP_SHARING_POSITION" description="PLG_CNTOOLS_WHATSAPP_SHARING_POSITION_DESC">
-					<option value="0">PLG_CNTOOLS_WHATSAPP_SHARING_BEFORECONTENT</option>
-					<option value="1">PLG_CNTOOLS_WHATSAPP_SHARING_AFTERCONTENT</option>
+				<field name="position" type="radio" class="btn-group" default="1" label="PLG_CNTOOLS_WHATSAPP_SHARING_POSITION" description="PLG_CNTOOLS_WHATSAPP_SHARING_POSITION_DESC">
+					<option value="1">PLG_CNTOOLS_WHATSAPP_SHARING_BEFORECONTENT</option>
+					<option value="2">PLG_CNTOOLS_WHATSAPP_SHARING_AFTERCONTENT</option>
+					<option value="3">PLG_CNTOOLS_WHATSAPP_SHARING_ONLY_MODULE</option>
 				</field>
 
+				<field name="positioninfo" showon="position:3" type="spacer" label="PLG_CNTOOLS_WHATSAPP_SHARING_ONLY_MODULE_DESC" />
 				<field name="basic_hidden1" type="hidden" default="" />
 			</fieldset>
 			<fieldset name="extra" label="PLG_CNTOOLS_WHATSAPP_SHARING_EXTRA_LABEL">

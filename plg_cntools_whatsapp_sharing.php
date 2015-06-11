@@ -3,7 +3,7 @@
  * @Copyright
  * @package     Content - WhatsApp Sharing - Plug In
  * @author      Clemens Neubauer {@link https://github.com/cn-tools/}
- * @date        Created on 01-Mai-2014
+ * @date        Created on 11-June-2015
  * @link        Project Site {@link https://github.com/cn-tools/plg_cntools_whatsapp_sharing}
  *
  * @license GNU/GPL
@@ -33,31 +33,40 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
         parent::__construct($subject, $config);
     }
 
-    public function onContentBeforeDisplay($context, &$row, &$params, $page = 0) {
-        if($this->params->get('position') == 0) {
+    public function onContentBeforeDisplay($context, &$article, &$params, $page = 0) {
+		if($context == 'com_content.article' and $this->params->get('position') == '1') {
             $this->loadHeader();
-            $html = $this->getWhatsAppButton($row);
+            $html = $this->getWhatsAppButton($article);
 
             return $html;
         }
     }
 
-    public function onContentAfterDisplay($context, &$row, &$params, $page = 0) {
-        if($this->params->get('position') == 1) {
+    public function onContentAfterDisplay($context, &$article, &$params, $page = 0) {
+		if($context == 'com_content.article' and $this->params->get('position') == '2') {
             $this->loadHeader();
-            $html = $this->getWhatsAppButton($row);
+            $html = $this->getWhatsAppButton($article);
 
             return $html;
         }
     }
 
+	public function onContentPrepare($context, &$article, &$params, $page = 0)
+	{	
+		if($context == 'mod_custom.content' and JString::strpos($article->text, '{whatsapp}') !== false and $this->params->get('position') == '3')
+		{
+            $this->loadHeader();
+			$article->text = preg_replace( "#{whatsapp}#s", $this->getWhatsAppButton($article), $article->text );	
+		}
+	} 
+	
 	private function loadHeader() {
         $document = JFactory::getDocument();
 		$script = '/* <![CDATA[ */ if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="'.JURI::base().'plugins/content/plg_cntools_whatsapp_sharing/whatsapp-button.js";h.appendChild(s);} /* ]]> */';
 		$document->addScriptDeclaration($script);
 	}
 
-    private function getWhatsAppButton($row) {
+    private function getWhatsAppButton($article) {
     	$buttonSize = $this->params->get('btnSize');
 				
 		// Find InfoText for sharing
@@ -94,9 +103,9 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 		{
 			if ($this->params->get('label') == '1')
 			{
-				$lLabel = $row->id.'-'.$row->title;
+				$lLabel = $article->id.'-'.$article->title;
 			} elseif ($this->params->get('label') == '2') {
-				$lLabel = $row->alias;
+				$lLabel = $article->alias;
 			} else {
 				$lLabel = str_replace(JURI::base(), '', JURI::current()); //remove base domain
 			}
@@ -112,7 +121,7 @@ class PlgContentPlg_CNTools_WhatsApp_Sharing extends JPlugin {
 			$lTrackingCode .= ');" ';
 		}
 		
-		$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$row->id.'" class="plg_cntools_whatsapp_sharing'.$this->params->get('divstyle').'" >';
+		$html = '<div id="plg_cntools_whatsapp_sharing_articleid'.$article->id.'" class="plg_cntools_whatsapp_sharing'.$this->params->get('divstyle').'" >';
 		$html .= '<a href="whatsapp://send" '.$lTrackingCode.'data-text="'.$dataText.'" data-href="'.$url.'" class="wa_btn '.$buttonSize.'" style="display:none">'.$buttonText.'</a>';
 		$html .= '</div><br class="clear" />';
 
