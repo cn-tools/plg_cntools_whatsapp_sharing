@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.9</version>
+	<version>0.0.10</version>
 	<description>PLG_CNTOOLS_WHATSAPP_SHARING_DESC</description>
 
 	<files>
@@ -65,11 +65,12 @@
 				<field name="category" required="true" type="text" default="plg_cntools_whatsapp_sharing" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_CATEGORY" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_CATEGORY_DESC" />
 				<field name="action" required="true" type="text" default="share" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_ACTION" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_ACTION_DESC" />
 
-				<field name="label" type="radio" default="0" class="btn-group" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_DESC">
-					<option value="0">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_URL</option>
-					<option value="1">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_ID_TITLE</option>
-					<option value="2">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_ALIAS</option>
+				<field name="label" type="radio" showon="position:1,2" default="1" class="btn-group" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_DESC">
+					<option value="1">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_URL</option>
+					<option value="2">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_ID_TITLE</option>
+					<option value="3">PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_ALIAS</option>
 				</field>
+				<field name="labelinfo" showon="position:3" type="note" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_LABELFLAG_MODULE_DESC" />
 
 				<field name="nonInteraction" type="radio" default="0" class="btn-group btn-group-yesno" label="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_NONINTERACTION" description="PLG_CNTOOLS_WHATSAPP_SHARING_TRACKING_NONINTERACTION_DESC">
 					<option value="0">JNO</option>
